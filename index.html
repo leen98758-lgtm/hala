@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سؤال خاص! 🤨✨</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe6eb 0%, #ffb6c1 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 90%;
+      width: 350px;
+      position: relative;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 22px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      min-height: 60px;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background-color: #f0f0f0;
+      color: #666;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .success-message {
+      display: none;
+    }
+
+    .success-message h2 {
+      color: #ff4d6d;
+      font-size: 24px;
+    }
+
+    .success-message p {
+      color: #555;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div id="questionContainer">
+      <h1>عندي سؤال قبل 🤨<br>اليوم عيد ميلادك؟</h1>
+      <div class="btn-container">
+        <button id="yesBtn" onclick="showLove()">نعم 🤍</button>
+        <button id="noBtn" onclick="escapeButton()">لا 🕸️</button>
+      </div>
+    </div>
+
+    <div id="successContainer" class="success-message">
+      <h2>كل عام وأنتِ بألف خير! 🎉🥳</h2>
+      <p>أتمنى لك سنة جديدة مليانة سعادة ونجاح وراحة بال ✨<br>من شخص أحب يعايدك بطريقته الخاصة 😉🎂</p>
+    </div>
+  </div>
+
+  <script>
+    let noClickCount = 0;
+
+    function escapeButton() {
+      const noBtn = document.getElementById('noBtn');
+      noClickCount++;
+
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+
+      let scale = 1 - (noClickCount * 0.15);
+      if (scale <= 0.1) {
+        noBtn.style.display = 'none';
+      } else {
+        noBtn.style.transform = `scale(${scale})`;
+      }
+    }
+
+    function showLove() {
+      document.getElementById('questionContainer').style.display = 'none';
+      document.getElementById('successContainer').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
+
