@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سؤال خاص! 🤨✨</title>
+  <title>✨رسالة من اختك الرهيبة(LEEEEE)✨</title>
   <style>
     body {
       margin: 0;
@@ -20,26 +20,36 @@
 
     .card {
       background: white;
-      padding: 40px 30px;
+      padding: 35px 25px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       max-width: 90%;
-      width: 350px;
+      width: 360px;
       position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
     }
 
     h1 {
       color: #ff4d6d;
       font-size: 22px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       line-height: 1.5;
     }
 
     .btn-container {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      min-height: 60px;
+      align-items: center;
+      gap: 15px;
+      min-height: 80px;
       position: relative;
     }
 
@@ -50,64 +60,75 @@
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    #yesBtn {
-      background-color: #ff4d6d;
-      color: white;
-      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
-    }
-
-    #yesBtn:hover {
-      transform: scale(1.1);
-    }
-
-    #noBtn {
-      background-color: #f0f0f0;
-      color: #666;
-      position: relative;
       transition: all 0.2s ease;
     }
 
-    .success-message {
-      display: none;
+    .yes-btn {
+      background-color: #ff4d6d;
+      color: white;
+      box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+      z-index: 10;
     }
 
-    .success-message h2 {
+    .no-btn {
+      background-color: #f0f0f0;
+      color: #666;
+      z-index: 5;
+    }
+
+    .card-title {
       color: #ff4d6d;
-      font-size: 24px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
     }
 
-    .success-message p {
-      color: #555;
-      font-size: 17px;
-      line-height: 1.6;
+    .message-text {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.8;
+      text-align: right;
     }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <div id="questionContainer">
-      <h1>عندي سؤال قبل 🤨<br>اليوم عيد ميلادك؟</h1>
+    
+    <!-- المرحله الاولى -->
+    <div id="step1" class="step active">
+      <h1>عندي سؤالين 🤨<br><br>الأول: أنا أختك المفضلة؟ 😼🤙🏻</h1>
       <div class="btn-container">
-        <button id="yesBtn" onclick="showLove()">نعم 🤍</button>
-        <button id="noBtn" onclick="escapeButton()">لا 🕸️</button>
+        <button class="yes-btn" onclick="nextStep(2)">نعم 🤍</button>
+        <button id="noBtn1" class="no-btn" onclick="escapeButton1()" onmouseover="escapeButton1()">لا 🕸️</button>
       </div>
     </div>
 
-    <div id="successContainer" class="success-message">
-      <h2>كل عام وأنتِ بألف خير! 🎉🥳</h2>
-      <p>أتمنى لك سنة جديدة مليانة سعادة ونجاح وراحة بال ✨<br>من شخص أحب يعايدك بطريقته الخاصة 😉🎂</p>
+    <!-- المرحله الثانيه -->
+    <div id="step2" class="step">
+      <h1>السؤال الثاني.. 😝<br><br>اليوم يوم ميلادك صحح؟؟؟</h1>
+      <div class="btn-container" id="btnContainer2">
+        <button id="yesBtn2" class="yes-btn" onclick="nextStep(3)">صح! 🤍</button>
+        <button id="noBtn2" class="no-btn" onclick="makeYesGiant()">لا 🕸️</button>
+      </div>
     </div>
+
+    <!-- المرحله الثالثه: المعايده -->
+    <div id="step3" class="step">
+      <div class="card-title">✨رسالة من اختك الرهيبة(LEEEEE)✨</div>
+      <div class="message-text">
+        ما بعرف اعبر أو امدح حدا ب اي طريقة لكن بعرف اكون كرييتف و اليوم حابة اكون اول حدا يعايد عليكِ ب هذي الطريقة ف كل عام وأنتِ بخير و بتمنالك سنة سعيدة تحققي فيها احلامك و احلام العيلة و بهيك ما بيعتمدوا علي ب ولاا اشيي , لا لا بمزح جد كل عام وأنتِ بخير و عقبال ال مئة سنة(أو عادي اكثر يعني ادعي على ذوقك) و بس والله👅
+      </div>
+    </div>
+
   </div>
 
   <script>
     let noClickCount = 0;
 
-    function escapeButton() {
-      const noBtn = document.getElementById('noBtn');
+    // تهريب زر لا في السؤال الأول
+    function escapeButton1() {
+      const noBtn = document.getElementById('noBtn1');
       noClickCount++;
 
       const x = Math.random() * (window.innerWidth - 120);
@@ -117,7 +138,7 @@
       noBtn.style.left = x + 'px';
       noBtn.style.top = y + 'px';
 
-      let scale = 1 - (noClickCount * 0.15);
+      let scale = 1 - (noClickCount * 0.2);
       if (scale <= 0.1) {
         noBtn.style.display = 'none';
       } else {
@@ -125,12 +146,22 @@
       }
     }
 
-    function showLove() {
-      document.getElementById('questionContainer').style.display = 'none';
-      document.getElementById('successContainer').style.display = 'block';
+    // جعل زر صح يكبر وياخد المكان في السؤال الثاني
+    function makeYesGiant() {
+      const noBtn2 = document.getElementById('noBtn2');
+      const yesBtn2 = document.getElementById('yesBtn2');
+      
+      noBtn2.style.display = 'none';
+      yesBtn2.style.transform = 'scale(2.5)';
+      yesBtn2.innerText = 'صح غصب! 🤍😂';
+    }
+
+    // التنقل بين المراحل
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+      document.getElementById('step' + stepNumber).classList.add('active');
     }
   </script>
 
 </body>
 </html>
-
